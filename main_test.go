@@ -1,4 +1,4 @@
-package main
+package adaptivethrottling
 
 import (
 	"testing"
@@ -13,14 +13,14 @@ func exampleFunc() (interface{}, error) {
 }
 
 func TestAdaptiveThrottling(t *testing.T) {
-	opts := AdaptiveThrottlingOptions{
+	opts := Options{
 		HistoryTimeMinute:    2,
 		K:                    2,
 		UpperLimitToReject:   0.9,
 		MaxRequestDurationMs: 300,
 	}
 
-	adaptiveThrottling := AdaptiveThrottling(opts)
+	adaptiveThrottling := New(opts)
 
 	for i := 0; i < 10; i++ {
 		result, err := adaptiveThrottling(exampleFunc)

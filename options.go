@@ -1,4 +1,4 @@
-package main
+package adaptivethrottling
 
 import (
 	"os"
@@ -13,15 +13,15 @@ const (
 	MAX_REQUEST_DURATION_MS = "300" // Maximum request duration in milliseconds
 )
 
-// AdaptiveThrottlingOptions contém as opções para o adaptive throttling.
-type AdaptiveThrottlingOptions struct {
+// Options contém as opções para o adaptive throttling.
+type Options struct {
 	HistoryTimeMinute    int
 	K                    float64
 	UpperLimitToReject   float64
 	MaxRequestDurationMs int
 }
 
-func (o *AdaptiveThrottlingOptions) Fill() {
+func (o *Options) Fill() {
 	if o.HistoryTimeMinute == 0 {
 		o.HistoryTimeMinute, _ = strconv.Atoi(o.GetOrDefault("HISTORY_TIME_MINUTE", HISTORY_TIME_MINUTE))
 	}
@@ -39,7 +39,7 @@ func (o *AdaptiveThrottlingOptions) Fill() {
 	}
 }
 
-func (o *AdaptiveThrottlingOptions) GetOrDefault(envVar, defaultValue string) string {
+func (o *Options) GetOrDefault(envVar, defaultValue string) string {
 	value, exists := os.LookupEnv(envVar)
 	if exists {
 		return value

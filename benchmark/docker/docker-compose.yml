@@ -2,6 +2,17 @@ version: '3.8'
 
 services:
 
+  api:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    restart: always
+    container_name: api
+    ports:
+      - "3003:3000"
+    networks:
+      - monitor-net
+
   prometheus:
     image: prom/prometheus:v2.45.0
     ports:

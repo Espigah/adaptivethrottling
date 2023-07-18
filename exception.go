@@ -1,4 +1,4 @@
-package main
+package adaptivethrottling
 
 // ThrottledException é uma estrutura de erro personalizada para representar exceções de throttling.
 type ThrottledException struct{}

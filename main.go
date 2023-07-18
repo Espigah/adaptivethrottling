@@ -1,4 +1,4 @@
-package main
+package adaptivethrottling
 
 import (
 	"math"
@@ -66,8 +66,8 @@ func (h *adaptiveThrottlingHistory) getAcceptsHistoryLength() int {
 	return len(h.acceptsHistory)
 }
 
-// AdaptiveThrottling é uma função que cria uma instância do adaptive throttling com base nas opções fornecidas.
-func AdaptiveThrottling(opts AdaptiveThrottlingOptions) func(func() (interface{}, error)) (interface{}, error) {
+// New é uma função que cria uma instância do adaptive throttling com base nas opções fornecidas.
+func New(opts Options) func(func() (interface{}, error)) (interface{}, error) {
 	opts.Fill()
 	requestRejectionProbability := 0.0
 	adaptiveThrottling := createAdaptiveThrottlingHistory(opts.HistoryTimeMinute)
