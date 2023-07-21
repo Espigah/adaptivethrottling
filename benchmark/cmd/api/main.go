@@ -22,7 +22,12 @@ func main() {
 	app.Get("/:testName", func(c *fiber.Ctx) error {
 		testName := fmt.Sprintf("%s", c.Params("testName"))
 
-		createConfigIfNotExist(testName, c)
+		err := createConfigIfNotExist(testName, c)
+
+		if err != nil {
+			fmt.Println("error = ", err)
+			return c.SendStatus(500)
+		}
 
 		config := configs[testName]
 		config.RequestCount++
@@ -47,15 +52,15 @@ func main() {
 	app.Listen(":3000")
 }
 
-func createConfigIfNotExist(testName string, c *fiber.Ctx) {
+func createConfigIfNotExist(testName string, c *fiber.Ctx) error {
 	if _, ok := configs[testName]; !ok {
 		config := new(Config)
 
 		if err := c.BodyParser(config); err != nil {
-			fmt.Println("error = ", err)
-			return
+			return err
 		}
 
 		configs[testName] = config
 	}
+	return nil
 }

@@ -3,9 +3,10 @@ module github.com/Espigah/adaptive-throttling-go/benchmark
 go 1.20
 
 require (
-	github.com/Espigah/adaptive-throttling-go v0.0.0-20230715030623-c15cb50a7a59
+	github.com/Espigah/adaptive-throttling-go v0.0.1
 	github.com/gofiber/fiber/v2 v2.48.0
 	github.com/prometheus/client_golang v1.16.0
+	github.com/sony/gobreaker v0.5.0
 )
 
 require (

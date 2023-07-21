@@ -1,3 +1,3 @@
-module github.com/Espigah/adaptive-throttling-go
+module github.com/Espigah/adaptivethrottling
 
 go 1.20
