@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="./docs/adaptive-throttling-go-golang.png" width="350" title="Golang Adaptive throttling" alt="Golang Adaptive throttling">
+
+</p>
+
 # Adaptive throttling
 
 Is a library that implements adaptive throttling. It is based on the sre-book + rafaelcapucho.
