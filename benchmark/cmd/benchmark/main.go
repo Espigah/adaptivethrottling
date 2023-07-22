@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Espigah/adaptive-throttling-go/benchmark/internal/testers"
+	"github.com/Espigah/adaptivethrottling/benchmark/internal/testers"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
@@ -20,18 +20,18 @@ func main() {
 	ctx, cancelCtx := context.WithDeadline(context.Background(), deadline)
 	defer cancelCtx()
 
-	teste1 := testers.NewTest1()
-	teste2 := testers.NewTest2()
-	teste3 := testers.NewTest3()
-	teste4 := testers.NewTest4()
+	test1 := testers.NewTest1()
+	test2 := testers.NewTest2()
+	test3 := testers.NewTest3()
+	test4 := testers.NewTest4()
 
 	for {
 		time.Sleep(50 * time.Millisecond)
 
-		go teste1()
-		go teste2()
-		go teste4()
-		go teste3()
+		go test1()
+		go test2()
+		go test4()
+		go test3()
 
 		if ctx.Err() != nil {
 			fmt.Printf("ctx.Err() = %+v\n", ctx.Err())

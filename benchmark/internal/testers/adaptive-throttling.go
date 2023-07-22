@@ -1,19 +1,21 @@
 package testers
 
 import (
-	adaptivethrottlinggo "github.com/Espigah/adaptive-throttling-go"
+	"fmt"
+
+	"github.com/Espigah/adaptivethrottling"
 )
 
 func NewTest1() func() {
 	testName := "adaptive_throttling_low_intermittence"
 
-	opts := adaptivethrottlinggo.Options{
+	opts := adaptivethrottling.Options{
 		HistoryTimeMinute:    2,
 		K:                    2,
 		UpperLimitToReject:   0.9,
 		MaxRequestDurationMs: 300,
 	}
-	adaptiveThrottling := adaptivethrottlinggo.New(opts)
+	throttling := adaptivethrottling.New(opts)
 
 	createGetCommand := func(testName string) func() (interface{}, error) {
 		return func() (interface{}, error) {
@@ -22,10 +24,10 @@ func NewTest1() func() {
 	}
 
 	return func() {
-		_, err := adaptiveThrottling(createGetCommand(testName))
+		_, err := throttling(createGetCommand(testName))
 		if err != nil {
-			if _, ok := err.(adaptivethrottlinggo.ThrottledException); ok {
-				//t.Log("Request throttled")
+			if _, ok := err.(adaptivethrottling.ThrottledException); ok {
+				fmt.Printf("%+v\n", "Request degraded")
 				m.processed.WithLabelValues(testName, "degraded").Inc()
 			} else {
 				m.processed.WithLabelValues(testName, "error").Inc()
@@ -39,14 +41,14 @@ func NewTest1() func() {
 func NewTest2() func() {
 	testName := "adaptive_throttling_high_intermittence"
 
-	opts := adaptivethrottlinggo.Options{
+	opts := adaptivethrottling.Options{
 		HistoryTimeMinute:    2,
 		K:                    2,
 		UpperLimitToReject:   0.9,
 		MaxRequestDurationMs: 300,
 	}
 
-	adaptiveThrottling := adaptivethrottlinggo.New(opts)
+	adaptiveThrottling := adaptivethrottling.New(opts)
 
 	createGetCommand := func(testName string) func() (interface{}, error) {
 		return func() (interface{}, error) {
@@ -57,8 +59,8 @@ func NewTest2() func() {
 	return func() {
 		_, err := adaptiveThrottling(createGetCommand(testName))
 		if err != nil {
-			if _, ok := err.(adaptivethrottlinggo.ThrottledException); ok {
-				//t.Log("Request throttled")
+			if _, ok := err.(adaptivethrottling.ThrottledException); ok {
+				fmt.Printf("%+v\n", "Request degraded")
 				m.processed.WithLabelValues(testName, "degraded").Inc()
 			} else {
 				m.processed.WithLabelValues(testName, "error").Inc()

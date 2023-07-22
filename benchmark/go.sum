@@ -1,5 +1,5 @@
-github.com/Espigah/adaptive-throttling-go v0.0.1 h1:9ATwDwfWC4bEtQAbIaX2lu8XMkeE0txR5cqD6W+EnCc=
-github.com/Espigah/adaptive-throttling-go v0.0.1/go.mod h1:78C9RHahfz58E7QYroZWmwqJMClWgNJ++IJ3Rvr32dQ=
+github.com/Espigah/adaptivethrottling v0.0.2 h1:FUqle10LimwSuvYmvTvUcRvnlBg3Nl4PouEHI9Pl+7g=
+github.com/Espigah/adaptivethrottling v0.0.2/go.mod h1:XrTCL2FSNj7gqc0LM0PtBHxo7L6kEkITuo3C0izQoG4=
 github.com/andybalholm/brotli v1.0.5 h1:8uQZIdzKmjc/iuPu7O2ioW48L81FgatrcpfFmiq/cCs=
 github.com/andybalholm/brotli v1.0.5/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=

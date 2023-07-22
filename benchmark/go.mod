@@ -1,9 +1,9 @@
-module github.com/Espigah/adaptive-throttling-go/benchmark
+module github.com/Espigah/adaptivethrottling/benchmark
 
 go 1.20
 
 require (
-	github.com/Espigah/adaptive-throttling-go v0.0.1
+	github.com/Espigah/adaptivethrottling v0.0.2
 	github.com/gofiber/fiber/v2 v2.48.0
 	github.com/prometheus/client_golang v1.16.0
 	github.com/sony/gobreaker v0.5.0
