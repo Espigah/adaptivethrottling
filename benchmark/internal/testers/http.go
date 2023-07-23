@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-const api = "http://localhost:3000/"
+const api = "http://localhost:3003/"
 
 type Config struct {
 	FirstPointOfFailure int `json: "firstPointOfFailure"`

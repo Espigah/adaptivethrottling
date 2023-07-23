@@ -16,7 +16,7 @@ func main() {
 		http.ListenAndServe(":2112", nil)
 	}()
 
-	deadline := time.Now().Add(5 * time.Minute)
+	deadline := time.Now().Add(480 * time.Minute)
 	ctx, cancelCtx := context.WithDeadline(context.Background(), deadline)
 	defer cancelCtx()
 

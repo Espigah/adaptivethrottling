@@ -13,13 +13,13 @@ func NewTest1() func() {
 		HistoryTimeMinute:    2,
 		K:                    2,
 		UpperLimitToReject:   0.9,
-		MaxRequestDurationMs: 300,
+		MaxRequestDurationMs: 1000,
 	}
 	throttling := adaptivethrottling.New(opts)
 
 	createGetCommand := func(testName string) func() (interface{}, error) {
 		return func() (interface{}, error) {
-			return get(testName, &Config{FirstPointOfFailure: 2000, Intermittency: 2000})
+			return get(testName, &Config{FirstPointOfFailure: 2000, Intermittency: 10000})
 		}
 	}
 
@@ -45,14 +45,14 @@ func NewTest2() func() {
 		HistoryTimeMinute:    2,
 		K:                    2,
 		UpperLimitToReject:   0.9,
-		MaxRequestDurationMs: 300,
+		MaxRequestDurationMs: 1000,
 	}
 
 	adaptiveThrottling := adaptivethrottling.New(opts)
 
 	createGetCommand := func(testName string) func() (interface{}, error) {
 		return func() (interface{}, error) {
-			return get(testName, &Config{FirstPointOfFailure: 2000, Intermittency: 10})
+			return get(testName, &Config{FirstPointOfFailure: 500, Intermittency: 100})
 		}
 	}
 

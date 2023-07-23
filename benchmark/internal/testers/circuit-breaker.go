@@ -18,7 +18,7 @@ func NewTest3() func() {
 
 	createGetCommand := func(testName string) func() (interface{}, error) {
 		return func() (interface{}, error) {
-			return get(testName, &Config{FirstPointOfFailure: 2000, Intermittency: 2000})
+			return get(testName, &Config{FirstPointOfFailure: 2000, Intermittency: 10000})
 		}
 	}
 
@@ -51,7 +51,7 @@ func NewTest4() func() {
 
 	createGetCommand := func(testName string) func() (interface{}, error) {
 		return func() (interface{}, error) {
-			return get(testName, &Config{FirstPointOfFailure: 2000, Intermittency: 10})
+			return get(testName, &Config{FirstPointOfFailure: 500, Intermittency: 100})
 		}
 	}
 

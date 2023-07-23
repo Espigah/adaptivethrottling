@@ -17,4 +17,4 @@ COPY . ./
 
 RUN go build -v -o api cmd/api/main.go
 
-CMD ["api]
+CMD ["./api"]

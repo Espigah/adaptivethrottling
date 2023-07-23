@@ -4,8 +4,8 @@ global:
   evaluation_interval: 15s
 
 scrape_configs:
-    - job_name: "pushgateway"
+    - job_name: "benchmark"
       scrape_interval: 5s
       metrics_path: "/metrics"
       static_configs:
-      - targets: ["pushgateway:9091"]
+      - targets: ["localhost:2112"]
